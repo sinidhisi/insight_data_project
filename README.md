@@ -1,7 +1,7 @@
 # InsightProject
 
 
-Streaming analysis of stocks for fun and profit
+vvStreaming analysis of stocks for fun and profit
 
 
 
