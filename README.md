@@ -16,7 +16,7 @@ To study how the market behaves and monitor it in real time. Make predictions of
 3. Make predictions for the given stock. Could it go up or down the next day (This can be rethought of as check the offset of real behavior from  predictions).
 
 ## Dashboard
-![Dashboard](https://github.com/sinidhisi/insight_data/blob/master/images/dashboard.jpg)
+![Dashboard](https://github.com/sinidhisi/insight_data_project/blob/master/images/dashboard.jpg)
 
 
 ## Technologies
@@ -42,6 +42,6 @@ Lambda Architecture **?**
 
 ## Pipeline
 
-![Pipeline](https://github.com/sinidhisi/insight_data/blob/master/images/pipeline.jpg)
+![Pipeline](https://github.com/sinidhisi/insight_data_project/blob/master/images/pipeline.jpg)
 
 
