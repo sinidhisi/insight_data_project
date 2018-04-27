@@ -51,8 +51,5 @@ Lambda Architecture **?**
 
 ##What are the (quantitative) specifications/constraints for this project?
 
-## Pipeline
-
-![Pipeline](https://github.com/sinidhisi/insight_data_project/blob/master/images/pipeline.jpg)
 
 
