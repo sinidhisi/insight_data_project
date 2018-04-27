@@ -49,7 +49,8 @@ Lambda Architecture **?**
 
 ## What are the (quantitative) specifications/constraints for this project?
  
-
+* GDELT: 2.5 TB per day
+* Trading activity: per minute 
 
 ## Proposed architecture
 ![architecture](https://github.com/sinidhisi/insight_data_project/blob/master/images/architecture.jpg)
