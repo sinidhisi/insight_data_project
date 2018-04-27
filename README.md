@@ -19,6 +19,8 @@ To study how the market behaves and monitor it in real time. Make predictions of
 ![Dashboard](https://github.com/sinidhisi/insight_data_project/blob/master/images/dashboard.jpg)
 
 
+
+
 ## Technologies
 
 Lambda Architecture **?**
@@ -39,6 +41,15 @@ Lambda Architecture **?**
 * **Scheduling:** Airflow
 
 * **Visualization:** Superset
+
+##What are the primary engineering challenges?
+
+* Scaling   
+
+##Proposed architecture
+![architecture](https://github.com/sinidhisi/insight_data_project/blob/master/images/architecture.jpg)
+
+##What are the (quantitative) specifications/constraints for this project?
 
 ## Pipeline
 
