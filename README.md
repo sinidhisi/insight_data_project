@@ -42,14 +42,18 @@ Lambda Architecture **?**
 
 * **Visualization:** Superset
 
-##What are the primary engineering challenges?
+## What are the primary engineering challenges?
 
-* Scaling   
+* Scaling
+* Huge data (2.5 TB per day)    
 
-##Proposed architecture
+## What are the (quantitative) specifications/constraints for this project?
+ 
+
+
+## Proposed architecture
 ![architecture](https://github.com/sinidhisi/insight_data_project/blob/master/images/architecture.jpg)
 
-##What are the (quantitative) specifications/constraints for this project?
 
 
 
