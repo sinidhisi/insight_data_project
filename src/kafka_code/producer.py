@@ -10,6 +10,8 @@ def delivery_report(err, msg):
     else:
         print('Message delivered to {} [{}]'.format(msg.topic(), msg.partition()))
 
+def read_S3():
+	
 
 some_data_source = ['1', '2']
 for data in some_data_source:
