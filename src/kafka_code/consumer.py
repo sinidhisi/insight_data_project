@@ -9,7 +9,7 @@ c = Consumer({
     }
 })
 
-c.subscribe(['mytopic'])
+c.subscribe(['gdelt_topic'])
 
 while True:
     msg = c.poll(1.0)

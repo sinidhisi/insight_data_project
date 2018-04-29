@@ -1,4 +1,6 @@
 from confluent_kafka import Producer
+import time
+import boto3
 
 p = Producer({'bootstrap.servers':'ec2-54-218-205-93.us-west-2.compute.amazonaws.com'  })
 
@@ -10,10 +12,24 @@ def delivery_report(err, msg):
     else:
         print('Message delivered to {} [{}]'.format(msg.topic(), msg.partition()))
 
-def read_S3():
-	
 
-some_data_source = ['1', '2']
+def read_S3(bucket_name):
+	s3 = boto3.resource('s3')
+	bucket = s3.Bucket(bucket_name)
+	p.poll(0)
+	for obj in bucket.objects.all():
+    	  key = obj.key
+   	  body = obj.get()['Body']
+          data = body.read().splitlines()		
+	  for item in data:
+	  	p.produce('gdelt_topic',item, callback=delivery_report)
+	        time.sleep(1)
+#   	  print body
+	
+        p.flush()
+
+read_S3('gdelt-open-data')
+some_data_source = ['doing this not s3']
 for data in some_data_source:
     # Trigger any available delivery report callbacks from previous produce() calls
     p.poll(0)
