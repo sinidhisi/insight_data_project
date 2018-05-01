@@ -2,7 +2,7 @@ from confluent_kafka import Producer
 import time
 import boto3
 
-p = Producer({'bootstrap.servers':'ec2-54-218-205-93.us-west-2.compute.amazonaws.com'  })
+p = Producer({'bootstrap.servers':'ec2-54-70-242-121.us-west-2.compute.amazonaws.com:9092'  })
 
 def delivery_report(err, msg):
     """ Called once for each message produced to indicate delivery result.
