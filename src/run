@@ -1,0 +1,3 @@
+spark-sql --driver-java-options "-Dlog4j.configuration=file:///home/hadoop/log4j.properties"
+
+/usr/local/spark/bin/spark-submit --master spark://ec2-54-202-181-200.us-west-2.compute.amazonaws.com:7077 --packages org.apache.spark:spark-streaming-kafka-0-8_2.11:2.0.2  spark_streaming.py
