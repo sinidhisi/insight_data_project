@@ -1,5 +1,7 @@
 import pyspark
 import os
+from pyspark.sql.functions import countDistinct
+from pyspark.sql.functions import col
 
 spark = pyspark.sql.SparkSession.builder \
     .master("local[*]") \
@@ -28,9 +30,18 @@ parts = lines.map(lambda l: l.split(','))\
 columns = parts.take(1)[0]
 
 df = spark.createDataFrame(parts, columns)
+# average
+#df.groupby('ISIN').agg({'MaxPrice': 'mean'}).show()
+# distinct
+df.select('SecurityDesc').distinct().show()
+#print(df.select('ISIN').distinct().count())
+#print(df.select('Mnemonic').distinct().count())
 
-df.printSchema()
-df.select("date").show()
+df.show()
+
+#df.show(10)
+#df.printSchema()
+            
 #print(lines.count())
 
 spark.stop()
