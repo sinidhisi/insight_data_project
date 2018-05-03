@@ -3,7 +3,7 @@ from pyspark import SparkContext ,SparkConf
 
 spark = SparkSession.builder.appName("gdelt").getOrCreate()
 conf = SparkConf().setAppName("gdelt")#.setMaster(master)
-sc = SparkContext()
+#sc = spark.sparkContext()
 
 lines = sc.textFile("s3a://gdelt-open-data/events/2018*") # Loads 73,385,698 records from 2016
 # Split lines into columns; change split() argument depending on deliminiter e.g. '\t'
