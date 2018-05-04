@@ -2,7 +2,7 @@ import pyspark
 import os
 from pyspark.sql.functions import countDistinct
 from pyspark.sql.functions import col
-
+    
 #put in main later     
 spark = pyspark.sql.SparkSession.builder \
     .master("local[*]") \
@@ -35,14 +35,24 @@ df = spark.createDataFrame(parts, columns)
 #df.groupby('ISIN').agg({'MaxPrice': 'mean'}).show()
 # distinct
 #sendtoPostgres(df.select('SecurityDesc').distinct())
-#print(df.select('ISIN').distinct().count())
+isin_df = df.select('ISIN').distinct()
 #print(df.select('Mnemonic').distinct().count())
-df.write.format('com.databricks.spark.csv').save('csv_xetra.csv')
+#df.write.format('com.databricks.spark.csv').save('csv_xetra.csv')
+  
+
+url = 'jdbc:postgresql://localhost:5432/postgres'
+properties = {
+        "user": "postgres",
+        "password": "postgres"
+      }
+table = 'temp'
+mode = "overwrite"
+isin_df.write.jdbc(url=url, table="temp", mode=mode, properties=properties)
 df.show()
 
 #df.show(10)
 #df.printSchema()
             
-#print(lines.count())
+
 
 spark.stop()
