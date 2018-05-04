@@ -3,6 +3,23 @@ import os
 from pyspark.sql.functions import countDistinct
 from pyspark.sql.functions import col
 
+def sendPostgres():
+     
+    print("send to postGres")
+    #my_writer = DataFrameWriter(df)
+
+#    url = 'jdbc:postgresql://localhost:5432/xetra'
+    
+    properties = {
+        "user": "postgres",
+        "password": "postgres"
+      }
+    table = 'temp'
+    #df1 = SQLContext.read.jdbc(url=url, table=table, properties=properties)
+
+    mode = "overwrite"
+    #df.write.jdbc(url=url, table="temp", mode=mode, properties=properties)
+
 #put in main later     
 spark = pyspark.sql.SparkSession.builder \
     .master("local[*]") \
@@ -31,18 +48,4 @@ parts = lines.map(lambda l: l.split(','))\
 columns = parts.take(1)[0]
 
 df = spark.createDataFrame(parts, columns)
-# average
-#df.groupby('ISIN').agg({'MaxPrice': 'mean'}).show()
-# distinct
-#sendtoPostgres(df.select('SecurityDesc').distinct())
-#print(df.select('ISIN').distinct().count())
-#print(df.select('Mnemonic').distinct().count())
-df.write.format('com.databricks.spark.csv').save('csv_xetra.csv')
-df.show()
-
-#df.show(10)
-#df.printSchema()
-            
-#print(lines.count())
-
-spark.stop()
+df.rdd.map(sendPostgres)

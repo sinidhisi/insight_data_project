@@ -14,7 +14,7 @@ from pyspark.sql import SQLContext
 def sendPostgres(df):
      
     print("send to postGres")
-    #my_writer = DataFrameWriter(df)
+    my_writer = DataFrameWriter(df)
 
     url = 'jdbc:postgresql://ec2-54-70-242-121.us-west-2.compute.amazonaws.com:5432/postgres'
     
@@ -28,7 +28,7 @@ def sendPostgres(df):
     mode = "overwrite"
     df.write.jdbc(url=url, table="temp", mode=mode, properties=properties)
 
-    #my_writer.jdbc(url_connect, table, mode, properties)
+    my_writer.jdbc(url_connect, table, mode, properties)
 
     #sql = """INSERT INTO temp(data)
     #         VALUES(%s) RETURNING id1;"""
