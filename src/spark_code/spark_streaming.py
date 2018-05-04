@@ -11,20 +11,22 @@ import json, math, datetime
 from pyspark.sql import DataFrameWriter
 from pyspark.sql import SQLContext
 
-def sendPostgres():
-    SQLContext = SQLContext(sc) 
+def sendPostgres(df):
+     
     print("send to postGres")
     #my_writer = DataFrameWriter(df)
 
     url = 'jdbc:postgresql://ec2-54-70-242-121.us-west-2.compute.amazonaws.com:5432/postgres'
+    
     properties = {
     	 "user": "nidhi",
    	 "password": "nidhi"
   	}
     table = 'temp'
-    df = SQLContext.read.jdbc(url=url, table=table, properties=properties)
+    #df = SQLContext.read.jdbc(url=url, table=table, properties=properties)
 
-    #mode = "overwrite"
+    mode = "overwrite"
+    df.write.jdbc(url=url, table="temp", mode=mode, properties=properties)
 
     #my_writer.jdbc(url_connect, table, mode, properties)
 
@@ -37,14 +39,15 @@ def sendPostgres():
     #id1 = cur.fetchone()[0]
     #conn.commit()
     
-    cur.close() 
+    #cur.close() 
 
-    conn.close()
+    #conn.close()
 
 def main(): 
 
     sc = SparkContext(appName="PythonSparkStreamingKafka")
     sc.setLogLevel("WARN")
+    sqlc = SQLContext(sc)
     print "creating ssc"
     # set microbatch interval as 10 seconds
     ssc = StreamingContext(sc, 10)
@@ -56,7 +59,7 @@ def main():
     parts = kafkaStream.map(lambda l: l[1].split('\t'))
     print "message"
     parts.pprint()
-    sendPostgres() 
+    sendPostgres(parts) 
     #parts.foreachRDD(sendPostgres)
     # Split the lines into words
     #words = kafkaStream.map(lambda v: json.loads(v[1]))

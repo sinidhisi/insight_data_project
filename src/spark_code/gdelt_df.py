@@ -6,7 +6,7 @@ conf = SparkConf().setAppName("gdelt")#.setMaster(master)
 #sc = 
 
 #lines = spark.sparkContext.textFile("s3a://gdelt-open-data/events/20180425*") 
-lines = spark.read.text("s3a://gdelt-open-data/v2/events/20160425*")
+lines = spark.read.text("s3a://gdelt-open-data/events/20160425*")
 # Split lines into columns; change split() argument depending on deliminiter e.g. '\t'
 
 #parts = lines.map(lambda l: l.split('\t'))

@@ -28,7 +28,7 @@ def read_S3(bucket_name):
 	
         p.flush()
 
-read_S3('gdelt-open-data')
+read_S3('gdelt-open-data/events/*')
 some_data_source = ['doing this not s3']
 for data in some_data_source:
     # Trigger any available delivery report callbacks from previous produce() calls
