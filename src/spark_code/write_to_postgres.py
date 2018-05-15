@@ -8,8 +8,8 @@ conn = psycopg2.connect(host="localhost",
 
 cursor = conn.cursor()
 
-
-df.rdd.map(row, cursor.execute("INSERT INTO Table (ISIN) VALUES", (row.ISIN)))
+cursor.execute("CREATE TABLE NEW (id integer) ") 
+#df.rdd.map(row, cursor.execute("INSERT INTO Table (ISIN) VALUES", (row.ISIN)))
 
 conn.commit()
 cursor.close()

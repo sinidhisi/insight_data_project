@@ -21,7 +21,7 @@ spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "s3.eu-cent
 spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.access.key", aws_access_key)
 spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.secret.key", aws_secret_access_key)
 
-lines = spark.sparkContext.textFile('s3a://deutsche-boerse-xetra-pds/2018-04-25*')
+lines = spark.sparkContext.textFile('s3a://deutsche-boerse-xetra-pds/2018*')
 
 parts = lines.map(lambda l: l.split(','))\
         .filter(lambda part: len(part) == 14)
@@ -35,7 +35,7 @@ df = spark.createDataFrame(parts, columns)
 #df.groupby('ISIN').agg({'MaxPrice': 'mean'}).show()
 # distinct
 #sendtoPostgres(df.select('SecurityDesc').distinct())
-isin_df = df.select('ISIN').distinct()
+isin_df = df.select('date').distinct()
 #print(df.select('Mnemonic').distinct().count())
 #df.write.format('com.databricks.spark.csv').save('csv_xetra.csv')
   
@@ -47,7 +47,7 @@ properties = {
       }
 table = 'temp'
 mode = "overwrite"
-isin_df.write.jdbc(url=url, table="temp", mode=mode, properties=properties)
+df.write.jdbc(url=url, table="temp", mode=mode, properties=properties)
 df.show()
 
 #df.show(10)
