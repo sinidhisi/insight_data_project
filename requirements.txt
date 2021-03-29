@@ -90,7 +90,7 @@ ptyprocess==0.5.2
 py==1.4.31
 pycparser==2.18
 pydruid==0.4.1
-Pygments==2.2.0
+Pygments==2.7.4
 PyHive==0.5.1
 pyparsing==2.0.3
 pytest==2.8.7
