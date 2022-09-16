@@ -60,7 +60,7 @@ jupyter-client==5.2.3
 jupyter-core==4.4.0
 kombu==4.1.0
 lxml==3.5.0
-Mako==1.0.7
+Mako==1.2.2
 Markdown==2.6.11
 MarkupSafe==1.0
 matplotlib==1.5.1
